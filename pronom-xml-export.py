@@ -3,7 +3,7 @@ import os
 import time
 import ConfigParser
 
-puid_type_list = ['x-fmt', 'fmt', 'x-cmp', 'cmp', 'x-chr', 'chr', 'x-sfw', 'sfw']
+puid_type_list = ['x-fmt', 'fmt']
 
 config = ConfigParser.RawConfigParser()
 config.read('pronom-xml-export.cfg')
@@ -26,7 +26,7 @@ def export_data():
    proxy = ''
    
    #comment this to remove proxy requirement
-   proxy = urllib2.ProxyHandler({'http': 'dummy@host:port'})
+   #proxy = urllib2.ProxyHandler({'http': 'dummy@host:port'})
 
    for puid_type in puid_dict.keys():
       puid_type_url = base_url + puid_type + '/'
@@ -55,7 +55,7 @@ def export_data():
          else:
             opener = urllib2.build_opener()
          
-         request.add_header('User-Agent', 'exponentialDK-PRONOM-Export/0.0.0')
+         request.add_header('User-Agent', 'bitarchivist-PRONOM-Export/0.0.0')
          
          print puid_url
 
